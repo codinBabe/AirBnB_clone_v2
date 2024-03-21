@@ -30,8 +30,6 @@ class FileStorage:
         else:
             return self.__objects
 
-
-
     def new(self, obj):
         """Adds new object to storage dictionary"""
         if obj:
@@ -46,7 +44,6 @@ class FileStorage:
             for key, val in temp.items():
                 temp[key] = val.to_dict()
             json.dump(temp, f)
-
 
     def reload(self):
         """Loads storage dictionary from file"""
@@ -70,7 +67,7 @@ class FileStorage:
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
-    
+
     def close(self):
         """Closes JSON"""
         self.reload()
