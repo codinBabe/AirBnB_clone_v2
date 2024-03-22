@@ -13,6 +13,7 @@ from models.place import Place
 from models.review import Review
 from models.user import User
 
+
 class DBStorage():
     """A database storage"""
     __engine = None
@@ -26,8 +27,9 @@ class DBStorage():
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
 
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                .format(user, password, host, db), pool_pre_ping=True)
+        self.__engine = create_engine(
+                'mysql+mysqldb://{}:{}@{}/{}'.format(user, password, host, db),
+                pool_pre_ping=True)
 
         if env == 'test':
             Base.metadata.drop_all(self.engine)
