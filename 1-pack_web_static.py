@@ -9,20 +9,20 @@ from datetime import datetime
 
 def do_pack():
     """Create a tar gzipped archive of the directory web_static."""
-    # obtain the current date and time
-    now = datetime.now().strftime("%Y%m%d%H%M%S")
 
-    # Construct path where archive will be saved
-    archive_path = "versions/web_static_{}.tgz".format(now)
+    time = datetime.now()
+
+    # obtain the current date and time
+    archive = 'web_static_' + time.strftime("%Y%m%d%H%M%S") + '.' + 'tgz'
 
     # use fabric function to create directory if it doesn't exist
-    local("mkdir -p versions")
+    local('mkdir -p versions')
 
-    # Use tar command to create a compresses archive
-    archived = local("tar -cvzf {} web_static".format(archive_path))
+    # Construct path where archive will be saved
+    create = local('tar -cvzf versions/{} web_static'.format(archive))
 
     # Check archive Creation Status
-    if archived.return_code != 0:
-        return None
+    if create is not None:
+        return archive
     else:
-        return archive_path
+        return None
