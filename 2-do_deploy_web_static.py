@@ -9,7 +9,7 @@ from os.path import exists
 
 
 # Set the host IP addresses for web-01 && web-02
-env.hosts = ['100.26.159.228', '54.236.8.200']
+env.hosts = ['52.91.125.80', '54.208.3.127']
 
 
 def do_deploy(archive_path):
